@@ -28,6 +28,7 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 	public void atualiarDados(Cliente entity, Cliente entityCadastrado) {
 		entityCadastrado.setCidade(entity.getCidade());
 		entityCadastrado.setCpf(entity.getCpf());
+		entityCadastrado.setIdade(entity.getIdade());
 		entityCadastrado.setEndereco(entity.getEndereco());
 		entityCadastrado.setEstado(entity.getEstado());
 		entityCadastrado.setNome(entity.getNome());
@@ -39,8 +40,8 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 	protected String getQueryInsercao() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("INSERT INTO TB_CLIENTE ");
-		sb.append("(ID, NOME, CPF, TEL, ENDERECO, NUMERO, CIDADE, ESTADO)");
-		sb.append("VALUES (nextval('sq_cliente'),?,?,?,?,?,?,?)");
+		sb.append("(ID, NOME, CPF,IDADE, TEL, ENDERECO, NUMERO, CIDADE, ESTADO)");
+		sb.append("VALUES (nextval('sq_cliente'),?,?,?,?,?,?,?,?)");
 		return sb.toString();
 	}
 
@@ -67,11 +68,12 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 	protected void setParametrosQueryInsercao(PreparedStatement stmInsert, Cliente entity) throws SQLException {
 		stmInsert.setString(1, entity.getNome());
 		stmInsert.setLong(2, entity.getCpf());
-		stmInsert.setLong(3, entity.getTel());
-		stmInsert.setString(4, entity.getEndereco());
-		stmInsert.setLong(5, entity.getNumero());
-		stmInsert.setString(6, entity.getCidade());
-		stmInsert.setString(7, entity.getEstado());
+		stmInsert.setLong(3, entity.getIdade());
+		stmInsert.setLong(4, entity.getTel());
+		stmInsert.setString(5, entity.getEndereco());
+		stmInsert.setLong(6, entity.getNumero());
+		stmInsert.setString(7, entity.getCidade());
+		stmInsert.setString(8, entity.getEstado());
 	}
 
 	@Override
@@ -83,11 +85,12 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 	protected void setParametrosQueryAtualizacao(PreparedStatement stmUpdate, Cliente entity) throws SQLException {
 		stmUpdate.setString(1, entity.getNome());
 		stmUpdate.setLong(2, entity.getTel());
-		stmUpdate.setString(3, entity.getEndereco());
-		stmUpdate.setLong(4, entity.getNumero());
-		stmUpdate.setString(5, entity.getCidade());
-		stmUpdate.setString(6, entity.getEstado());
-		stmUpdate.setLong(7, entity.getCpf());
+		stmUpdate.setLong(3, entity.getIdade());
+		stmUpdate.setString(4, entity.getEndereco());
+		stmUpdate.setLong(5, entity.getNumero());
+		stmUpdate.setString(6, entity.getCidade());
+		stmUpdate.setString(7, entity.getEstado());
+		stmUpdate.setLong(8, entity.getCpf());
 	}
 
 	@Override

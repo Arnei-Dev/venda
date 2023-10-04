@@ -29,7 +29,7 @@ public class ClienteDAOTeste {
 	public ClienteDAOTeste() {
 		clienteDAO = new ClienteDAO();
 	}
-	
+	/*
 	@After
 	public void end() throws DAOException {
 		Collection<Cliente> list = clienteDAO.buscarTodos();
@@ -42,12 +42,13 @@ public class ClienteDAOTeste {
 			}
 		});
 	}
-
+*/
 	@Test
 	public void pesquisarCliente() throws MaisDeUmRegistroException, TableException, TipoChaveNaoEncontradaException, DAOException {
 		Cliente cliente = new Cliente();
 		cliente.setNome("Mário Dias");
-		cliente.setCpf(1433877887L);
+		cliente.setCpf(14333787L);
+		cliente.setIdade(36);
 		cliente.setCidade("São Paulo");
 		cliente.setEndereco("Rua Conselheiro Ramalho");
 		cliente.setEstado("SP");
@@ -58,6 +59,6 @@ public class ClienteDAOTeste {
 		Cliente clienteConsultado = clienteDAO.consultar(cliente.getCpf());
 		Assert.assertNotNull(clienteConsultado);
 		
-		clienteDAO.excluir(cliente.getCpf());
+		//clienteDAO.excluir(cliente.getCpf());
 	}
 }
